@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LM Systems</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="./home.css">
+</head>
+
+<body id="body">
+    <!-- Navbar -->
+    <div class="l-navbar show" id="navbar">
+        <div class="nav">
+            <div>
+                <a href="#" class="nav_logo">
+                    <ion-icon name="library" class="nav-logo-icon"></ion-icon>
+                    <span class="nav_logo-text">LM Systems</span>
+                </a>
+                <div class="nav_toggle" id="nav_toggle">
+                    <ion-icon name="chevron-back-outline"></ion-icon>
+                </div>
+                <ul class="nav_list">
+                    <a href="#" class="nav_link active">
+                        <ion-icon name="home" class="nav_icon"></ion-icon>
+                        <span class="nav_text">Home</span>
+                    </a>
+                    <a href="#" class="nav_link">
+                        <ion-icon name="book" class="nav_icon"></ion-icon>
+                        <span class="nav_text">Book Management</span>
+                    </a>
+                    <a href="#" class="nav_link">
+                        <ion-icon name="people" class="nav_icon"></ion-icon>
+                        <span class="nav_text">User Management</span>
+                    </a>
+
+                    <a href="#" class="nav_link">
+                        <ion-icon name="receipt" class="nav_icon"></ion-icon>
+                        <span class="nav_text">Book Borrow Slip</span>
+                    </a>
+                    <a href="#" class="nav_link">
+                        <ion-icon name="reader" class="nav_icon"></ion-icon>
+                        <span class="nav_text">Book Return Slip</span>
+                    </a>
+                    <a href="#" class="nav_link">
+                        <ion-icon name="create" class="nav_icon"></ion-icon>
+                        <span class="nav_text">Report & Analytics</span>
+                    </a>
+                </ul>
+            </div>
+            <div>
+                <a href="./loginRegister.html" class="nav_link" id="logout">
+                    <ion-icon name="log-out" class="nav_icon"></ion-icon>
+                    <span class="nav_text">Logout</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- Dropdown menu profile -->
+    <div class="menu-profile">
+        <div class="menu-profile-icon">
+            <ion-icon name="cart" id="cart-icon"></ion-icon>
+            <ion-icon name="notifications" class="noti-icon"></ion-icon>
+            <img src="\Assets\user0.png" class="user-pic" id="userpic">
+        </div>
+        <div class="drop-menu-profile" id="drop-menu-profile">
+            <a id="username" href="#"> <img src="\Assets\user0.png" class="user-pic-in">Username0 </a>
+            <a href="#">
+                <ion-icon name="person"></ion-icon> Profile
+            </a>
+            <a href="#">
+                <ion-icon name="settings"></ion-icon> Settings
+            </a>
+            <a href="#">
+                <ion-icon name="help-circle"></ion-icon> Help & Support
+            </a>
+            <a href="#">
+                <ion-icon name="swap-horizontal"></ion-icon> Convert Account
+            </a>
+        </div>
+    </div>
+    <!-- show list books -->
+    <div id="container-lib">
+        <div class="filter-by-status">
+            <h3>Sách mượn nhiều trong tháng</h3>
+        </div>
+        <ul id="list-book">
+            <li>
+                <div class="book-item">
+                    <div class="book-top">
+                        <a href="#" class="book-picture">
+                            <img src="/Assets/user0.png" alt="Ảnh bìa sách">
+                            <button class="view-detail">
+                            <h2>Doraemon</h2>
+                            <div class="status-rate">
+                                <li class="status-book">Status: Còn</li>
+                                <li class="rate-book">Rate: 9.0 
+                                    <ion-icon name="star" class="icon-star"></ion-icon>
+                                </li>
+                            </div>
+                            <p class="content-preview"><b>Mô tả:</b> Bộ truyện được xem là huyền thoại của Nhật Bản. Nói về cuộc sống của một chú nhóc tên Nobita, tính tình hậu đậu và chú mèo máy Doremon đến từ thế kỉ 22 cùng những người bạn Xuka, Chaien, Xeko; để từ đó gây ra bao tiếng cười và rút ra những bài học ý nghĩa cho người xem !!</p>
+                            <p><b>ID:</b> 978-4-1234-56789</p>
+                            <p><b>Thể loại:</b> Truyện tranh</p>
+                            <p><b>Tác giả:</b> Fujiko F. Fujio</p>
+                            <p><b>Bình luận:</b> ... (Click để xem chi tiết)</p>
+                        </button>
+                            
+                        </a>
+                        <span id="category">Truyện tranh</span>
+                    </div>
+                    <div class="book-info">
+                        <h2>Doraemon</h3>
+                        <p>Tác giả: Fujiko F. Fujio </p>
+                        <p>Đã mượn: 10</p>
+                        <p>Còn: 90</p>
+                    </div>
+                    <button type="button" class="add-to-cart">
+                        <ion-icon name="cart" class="cart"></ion-icon>
+                        Thêm Vào Giỏ
+                    </button> 
+                </div>
+               
+            </li>
+             <li>
+                <div class="book-item">
+                    <div class="book-top">
+                        <a href="#" class="book-picture">
+                            <img src="/Assets/user0.png" alt="Ảnh bìa sách">
+                            <button class="view-detail">
+                                <h2>Doraemon</h2>
+                                <div class="status-rate">
+                                    <li class="status-book">Status: Còn</li>
+                                    <li class="rate-book">Rate: 9.0 
+                                        <ion-icon name="star" class="icon-star"></ion-icon>
+                                    </li>
+                                </div>
+                                <p class="content-preview"><b>Mô tả:</b> Bộ truyện được xem là huyền thoại của Nhật Bản. Nói về cuộc sống của một chú nhóc tên Nobita, tính tình hậu đậu và chú mèo máy Doremon đến từ thế kỉ 22 cùng những người bạn Xuka, Chaien, Xeko; để từ đó gây ra bao tiếng cười và rút ra những bài học ý nghĩa cho người xem !!</p>
+                                <p><b>ID:</b> 978-4-1234-56789</p>
+                                <p><b>Thể loại:</b> Truyện tranh</p>
+                                <p><b>Tác giả:</b> Fujiko F. Fujio</p>
+                                <p><b>Bình luận:</b> ... (Click để xem chi tiết)</p>
+                            </button>   
+                        </a>
+                        <span id="category">Truyện tranh</span>
+                    </div>
+                    <div class="book-info">
+                        <h2>Doraemon</h3>
+                        <p>Tác giả: Fujiko F. Fujio </p>
+                        <p>Đã mượn: 10</p>
+                        <p>Còn: 90</p>
+                    </div>
+                    <button type="button" class="add-to-cart">
+                        <ion-icon name="cart" class="cart"></ion-icon>
+                        Thêm Vào Giỏ
+                    </button> 
+                </div>
+               
+            </li>
+        </ul>
+    </div>
+    
+    <section class="see-book-details">
+        <ion-icon name="close" class="close-section-icon"></ion-icon>
+        <div class="details-overview">
+            <img src="/Assets/user0.png" id="picture-book" alt="Ảnh bìa sách">
+            <h2>Chaien </h2>
+            <h3 id="rate-count"> 
+                <ion-icon name="star" class="count-star"></ion-icon>
+                <ion-icon name="star" class="count-star"></ion-icon>
+                <ion-icon name="star" class="count-star"></ion-icon>
+                <ion-icon name="star" class="count-star"></ion-icon>
+                <ion-icon name="star" class="count-star"></ion-icon>
+                <ion-icon name="star" class="count-star"></ion-icon>
+                <ion-icon name="star" class="count-star"></ion-icon>
+                <ion-icon name="star" class="count-star"></ion-icon>
+                <ion-icon name="star" class="count-star"></ion-icon>
+                <ion-icon name="star" class="count-star"></ion-icon>        
+            </h3>
+            <p><b>Tác giả:</b> Fujiko F. Fujio</p>
+            <p><b>Thể loại:</b> Truyện tranh</p>
+            <p><b>ID:</b> 978-4-1234-56789</p>
+            <p><b>Ngày xuất bản: </b>12/07/2024</p>
+            <p class="description-book"><b>Mô tả:</b> Bộ truyện được xem là huyền thoại của Nhật Bản. Nói về cuộc sống của một chú nhóc tên Nobita, tính tình hậu đậu và chú mèo máy Doremon đến từ thế kỉ 22 cùng những người bạn Xuka, Chaien, Xeko; để từ đó gây ra bao tiếng cười và rút ra những bài học ý nghĩa cho người xem !!</p>
+            <p>------------------------------------------------------------------------------------------</p>
+            <p><b>Bình luận:</b></p>
+        </div>
+        <div id="section-container-cmt">
+            <div id="section-cmt">
+                <img class="user-pic-cmt" src="/Assets/user0.png">
+                <textarea row="0" id="cmt-input" placeholder="Bình luận..."></textarea>   
+            </div>
+            <div type="button" id="btn-post-cmt">
+                <button id="text-post-cmt">Đăng </button>
+            </div>
+            <div id="section-content">
+                <li>
+                    <div class="area-content-cmt">
+                        <span class="avatar">
+                            <img class="user-pic-cmt" src="/Assets/user0.png">
+                        </span>
+                        <div class="cmt-content">
+                            <p class="usernameF">duydung0036
+                                <span class="time-cmt">2 giờ trước</span>
+                            </p>
+                            <p>Truyện rất hay!! Nhưng tôi nghĩ những người không thích chủ đề này sẽ đánh giá thấp nó</p>
+                        </div> 
+                        <span class="chevron-icon"><ion-icon name="chevron-down-outline"></ion-icon></span>
+                        <button class="delete-edit-cmt">
+                            <ul>
+                                <li>Xóa bình luận</li>
+                                <li>Sửa bình luận</li>
+                            </ul>
+                        </button>
+                    </div>    
+                </li>
+                 <li>
+                    <div class="area-content-cmt">
+                        <span class="avatar">
+                            <img class="user-pic-cmt" src="/Assets/user0.png">
+                        </span>
+                        <div class="cmt-content">
+                            <p class="usernameF">duydung0036
+                                <span class="time-cmt">2 giờ trước</span>
+                            </p>
+                            <p>Truyện rất hay!! Nhưng tôi nghĩ những người không thích chủ đề này sẽ đánh giá thấp nó</p>
+                        </div> 
+                        <span class="chevron-icon"><ion-icon name="chevron-down-outline"></ion-icon></span>
+                        <button class="delete-edit-cmt">
+                            <ul>
+                                <li>Xóa bình luận</li>
+                                <li>Sửa bình luận</li>
+                            </ul>
+                        </button>
+                    </div>    
+                </li>       
+            </div>
+        </div>
+    </section>
+    <button id="confirm-actions">
+        <b>Bạn chắc chắn muốn xóa bình luận?</b>
+        <div id="actions">
+            <span id="back">Hủy</span>
+            <span id="confirm">Xác nhận</span>
+        </div>
+    </button>     
+    <button id="btn-edit-content">
+        <div contenteditable="true" id="content-to-edit">Truyện rất hay!! Nhưng tôi nghĩ những người không thích chủ đề này sẽ đánh giá thấp nó A Truyện rất hay!! Nhưng A</div>
+        <div id="actions-edit">
+            <span id="confirm-to-edit">Xác nhận</span>
+            <span id="delete-action">Hủy</span>
+        </div>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
+    <script src="home.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
