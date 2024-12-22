@@ -25,59 +25,52 @@
                 <ul class="nav_list">
                     <a href="#" class="nav_link active">
                         <ion-icon name="home" class="nav_icon"></ion-icon>
-                        <span class="nav_text">Home</span>
+                        <span class="nav_text">Trang chủ</span>
                     </a>
                     <a href="#" class="nav_link">
                         <ion-icon name="book" class="nav_icon"></ion-icon>
-                        <span class="nav_text">Book Management</span>
+                        <span class="nav_text">Quản lý sách</span>
                     </a>
                     <a href="#" class="nav_link">
                         <ion-icon name="people" class="nav_icon"></ion-icon>
-                        <span class="nav_text">User Management</span>
-                    </a>
-
-                    <a href="#" class="nav_link">
-                        <ion-icon name="receipt" class="nav_icon"></ion-icon>
-                        <span class="nav_text">Book Borrow Slip</span>
-                    </a>
-                    <a href="#" class="nav_link">
-                        <ion-icon name="reader" class="nav_icon"></ion-icon>
-                        <span class="nav_text">Book Return Slip</span>
-                    </a>
-                    <a href="#" class="nav_link">
-                        <ion-icon name="create" class="nav_icon"></ion-icon>
-                        <span class="nav_text">Report & Analytics</span>
+                        <span class="nav_text">Quản lý người dùng</span>
                     </a>
                 </ul>
             </div>
             <div>
                 <a href="./loginRegister.html" class="nav_link" id="logout">
                     <ion-icon name="log-out" class="nav_icon"></ion-icon>
-                    <span class="nav_text">Logout</span>
+                    <span class="nav_text">Đăng xuất</span>
                 </a>
             </div>
         </div>
     </div>
     <!-- Dropdown menu profile -->
     <div class="menu-profile">
+        <div>
+            <input id="search-info" type = "text" placeholder="Bạn muốn tìm sách nào?">
+            <ion-icon name="search" id="icon-search"></ion-icon>
+        </div>
         <div class="menu-profile-icon">
             <ion-icon name="cart" id="cart-icon"></ion-icon>
+            <div id="cart-count-book" class="count-info">0</div>
             <ion-icon name="notifications" class="noti-icon"></ion-icon>
+            <div id="count-noti" class="count-info">0</div>
             <img src="\Assets\user0.png" class="user-pic" id="userpic">
         </div>
         <div class="drop-menu-profile" id="drop-menu-profile">
             <a id="username" href="#"> <img src="\Assets\user0.png" class="user-pic-in">Username0 </a>
-            <a href="#">
-                <ion-icon name="person"></ion-icon> Profile
+            <a href="#" id="profile-icon">
+                <ion-icon name="person"></ion-icon> Thông tin cá nhân
+            </a>
+            <a href="#" id="text-view-list-borrow">
+                <ion-icon name="book"></ion-icon> Danh sách mượn
             </a>
             <a href="#">
-                <ion-icon name="settings"></ion-icon> Settings
+                <ion-icon name="help-circle"></ion-icon> Hỗ trợ
             </a>
             <a href="#">
-                <ion-icon name="help-circle"></ion-icon> Help & Support
-            </a>
-            <a href="#">
-                <ion-icon name="swap-horizontal"></ion-icon> Convert Account
+                <ion-icon name="swap-horizontal"></ion-icon> Chuyển tài khoản
             </a>
         </div>
     </div>
@@ -252,7 +245,85 @@
             <span id="delete-action">Hủy</span>
         </div>
     </button>
+    <div id="notification" class="notification">
+        <ion-icon name="checkmark-outline"></ion-icon> Đăng nhập thành công!
+    </div>
+    <div id="overlay" class="overlay"></div>
+    <button id="title-cart">Thông tin trong giỏ (Danh sách quan tâm)
+        <ion-icon name="close-outline" id="close-cart"></ion-icon>
+    </button>
+    <section id="in-cart">
+        <button class="actions-in-cart" onclick="pickAllElementInCart(this)">Chọn tất cả</button>
+        <button class="actions-in-cart" onclick="deleteElementsInCart()">Xóa nhiều</button>
+        <button class="actions-in-cart">Mượn sách</button>
+        <table id="list-info-cart">
+            <thead>
+                <tr>
+                    <th>Mã sách</th>
+                    <th>Ảnh sách</th>
+                    <th>Tên sách</th>
+                    <th>Thể loại</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="table-body-cart">
+                <tr id="book-inCart-5">
+                    <td>1</td>
+                    <td><img src="/Assets/user0.png" class="picture-book-inCart"></td>
+                    <td>Dế mèn phiêu lưu ký</td>
+                    <td><input class="input-quantity-inCart" type="number" min="1" max="30" value="1" required oninput="validateAndCorrectNumber(this)"></td>
+                    <td>
+                        <button onclick="deleteElementInCart(5)">Xóa</button>
+                        <button onclick="pickElementInCart(5, this)">Chọn</button>
+                    </td>
+                </tr>
+                <tr id="book-inCart-6">
+                    <td>1</td>
+                    <td><img src="/Assets/user0.png" class="picture-book-inCart"></td>
+                    <td>Dế mèn phiêu lưu ký</td>
+                    <td><input class="input-quantity-inCart" type="number" min="1" max="30" value="1" required oninput="validateAndCorrectNumber(this)"></td>
+                    <td>
+                        <button onclick="deleteElementInCart(6)">Xóa</button>
+                        <button onclick="pickElementInCart(6, this)">Chọn</button>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </section> 
+    <button id="title-profile">Thông tin cá nhân
+        <ion-icon name="close-outline" id="close-profile"></ion-icon>
+    </button>
+    <section id="in-profile">
+        <img id="avt-in-profile"src="/Assets/user0.png" title="Ảnh đại diện">
+        <div><b>Họ và tên:</b></div>
+        <div class="info-profile" id="profile-name" contenteditable="false">Vu Duy Dung</div>
+        <div><b>Số điện thoại:</b></div>
+        <div class="info-profile" id="profile-phone" contenteditable="false">Vu Duy Dung</div>
+        <div><b>Địa chỉ:</b></div>
+        <div class="info-profile" id="profile-address" contenteditable="false">Vu Duy Dung Vu Duy Dung Vu Duy Dung Vu Duy Dung Vu Duy Dung</div>
+        <button id="update-profile">Cập nhật</button> 
+    </section>
 
+    <button id="title-list-borrow">Thông tin danh sách mượn
+        <ion-icon name="close-outline" id="close-list-borrow"></ion-icon>
+    </button>
+    <section id="in-list-borrow">
+        <table id="list-book-borrow">
+            <thead>
+                <tr>
+                    <th>Mã sách</th>
+                    <th>Ảnh sách</th>
+                    <th>Tên sách</th>
+                    <th>Ngày mượn</th>
+                    <th>Hạn trả</th>
+                    <th>Trạng thái</th>
+                </tr>
+            </thead>
+            <tbody id="table-body-list-borrow">
+            </tbody>
+        </table>
+    </section> 
     <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
     <script src="home.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

@@ -16,7 +16,7 @@ async function handleRegistration(event) {
     console.log(registrationData);
     try {
         // Send registration data to server
-        const response = await fetch('http://localhost:3000/register', {
+        const response = await fetch('http://localhost:8080/register', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(registrationData)
@@ -39,9 +39,8 @@ async function handleLogin(event) {
         email: document.querySelector('.login input[type="email"]').value,
         password: document.querySelector('.login input[type="password"]').value
     };
-    console.log(JSON.stringify(loginData));
     try {
-        const response = await fetch('http://localhost:3000/login', {
+        const response = await fetch('http://localhost:8080/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(loginData)
@@ -52,8 +51,12 @@ async function handleLogin(event) {
             const infoUser = {
                 username: data.username,
                 userID: data.userID,
-                pathPicture: data.pathPicture
+                imageLink: data.imageLink,
+                name: data.name,
+                address: data.address,
+                phone: data.phone
             }
+            sessionStorage.setItem("isLogin", true);
             sessionStorage.setItem("infoUser", JSON.stringify(infoUser));
             window.location.href = "home.html";
         }

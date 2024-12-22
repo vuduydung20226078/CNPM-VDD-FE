@@ -248,6 +248,22 @@ a {
 .drop-menu-profile a .user-pic-in {
     margin-right: 8px;
 }
+#search-info{
+    position: absolute;
+    top: 16px;
+    right: 200px;
+    width: 300px;
+    height: 30px;
+    border-radius: 20px;
+    padding: 5px 10px;
+}
+#icon-search{
+    position: absolute;
+    top: 22px;
+    right: 210px;
+    color: black;
+    cursor: pointer;
+}
 /* list book */
 #container-lib {
     position: relative;
@@ -403,7 +419,7 @@ a {
     background-color: black;
     border-radius: 2px solid #333;
     box-shadow: 1px 2px 4px #333;
-    z-index: 200;
+    z-index: 501;
     color: var(--white-color);
     overflow-y: auto;
     overflow-x: hidden;
@@ -470,6 +486,7 @@ a {
     width: 40px;
     height: 40px;
     bottom: 85px;
+    border-radius: 50%;
     left: 10px;
     cursor: pointer;
    
@@ -561,7 +578,8 @@ a {
 .delete-edit-cmt li {
     border-bottom: 1px solid #949191 ;
     cursor: pointer;
-    padding: 0;
+    padding: 0px;
+    padding-top: 1px;
 }
 .delete-edit-cmt li:hover {
     background-color: #333;
@@ -644,6 +662,357 @@ a {
 #content-to-edit {
     padding: 5px;
 }
+.notification {
+    position: fixed;
+    top: -80px; 
+    left: 55%;
+    transform: translateX(-50%);
+    width: 250px;
+    background-color: #41eea0;
+    color: black;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-align: center;
+    z-index: 1000;
+    transition: top 0.5s ease-in-out;
+}
+.notification.show {
+    top: 0;
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: none; 
+    z-index: 500;
+}
+.overlay.active {
+    display: block;
+}
+.no-scroll{
+    overflow: hidden;
+}
+#title-cart{
+    position: fixed;
+    top: 12%;
+    right: 3%;
+    width: 80%;
+    height: 8%;
+    background-color: #696464;
+    z-index: 502;
+    font-size: 24px;
+    font-weight: bolder;
+    border: 2px solid #444;
+    border-left: none;
+    border-right: none;
+    border-top:none;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    z-index: 502;
+    display: none;
+    transition: 0.3s;
+}
+#title-cart.active{
+    display: block;
+}
+#close-cart{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 25px;
+    height: 25px;
+    color: #dedede;
+    border-top-right-radius: 10px ;
+    border-bottom-left-radius: 10px;
+    background-color: #020e1f;
+    cursor: pointer;
+    z-index: 503;
+}
+#close-cart:hover{
+    background-color: var(--second-color);
+    color: #020e1f;
+}
+#in-cart{
+    position: fixed;
+    top: 18%;
+    right: 3%;
+    width: 80%;
+    height: 80%;
+    background-color: #696464;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding: 30px 10px 10px 15px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 501;
+    display: none;
+    transition: 0.3s;
+}
+#in-cart.active{
+    display: block
+}
+#in-cart.active
+.picture-book-inCart{
+    width: 50%;
+    height: 100px;
+}
+
+#list-info-cart {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    background-color: #f9f9f9;
+}
+#list-info-cart thead {
+    background-color: rgb(75, 184, 196);
+    color: white;
+}
+
+#list-info-cart th {
+    padding: 10px;
+    color: #020e1f;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+#table-body-cart {
+    background-color:var(--white-color);
+}
+
+#table-body-cart td {
+    padding: 8px;
+    border: 1px solid #fff;
+    text-align: center;
+    font-size: 16px;
+}
+
+#table-body-cart tr:hover {
+    background-color: #91a897;
+}
+
+#table-body-cart button {
+    width: 75px;
+    height: 30px;
+    padding: 6px 12px;
+    background-color: #444;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#table-body-cart button:hover {
+    background-color: black;
+}
+.actions-in-cart{
+    background-color: #333;
+    width: 100px;
+    height: 40px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 0;
+    font-weight: bold;
+}
+.actions-in-cart:hover{
+    background-color: black;
+}
+.count-info{
+    position: absolute;
+    top: 10px;
+    right: 100px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+#count-noti{
+    right: 60px;
+}
+#title-profile{
+    position: fixed;
+    top: 19%;
+    right: 35%;
+    width: 300px;
+    height: 8%;
+    background-color: #867f7f;
+    z-index: 502;
+    font-size: 24px;
+    font-weight: bolder;
+    border: 2px solid #444;
+    border-left: none;
+    border-right: none;
+    border-top:none;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    z-index: 502;
+    display: none;
+    transition: 0.3s;
+}
+#close-profile{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 25px;
+    height: 25px;
+    color: #dedede;
+    border-top-right-radius: 10px ;
+    border-bottom-left-radius: 10px;
+    background-color: #020e1f;
+    cursor: pointer;
+    z-index: 503;
+}
+#close-profile:hover{
+    background-color: var(--second-color);
+    color: #020e1f;
+}
+#in-profile{
+    position: fixed;
+    top: 25%;
+    right: 35%;
+    width: 300px;
+    height: 400px;
+    background-color: #867f7f;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding: 30px 30px 10px 30px;
+    z-index: 501;
+    display: none;
+    transition: 0.3s;
+}
+#avt-in-profile{
+    position: relative;
+    width: 100px;
+    height: 100px;
+    left: 70px;
+    border-radius: 50%;
+    z-index: 600;
+    cursor: pointer;
+}
+#in-profile div {
+    position: relative;
+    top: 20px;
+
+}
+.info-profile{
+    background-color: #333;
+    color: var(--white-color);
+    padding: 5px 10px;
+}
+#update-profile{
+    position: absolute;
+    width: 80px;
+    height: 30px;
+    background-color: #333;
+    top: 365px;
+    left: 110px;
+    color: var(--white-color);
+    cursor: pointer;
+}
+#update-profile:hover{
+    background-color: black;
+}
+#title-list-borrow{
+    position: fixed;
+    top: 12%;
+    right: 3%;
+    width: 80%;
+    height: 8%;
+    background-color: #696464;
+    z-index: 502;
+    font-size: 24px;
+    font-weight: bolder;
+    border: 2px solid #444;
+    border-left: none;
+    border-right: none;
+    border-top:none;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    display: none;
+    z-index: 502;
+    transition: 0.3s;
+}
+#close-list-borrow{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 25px;
+    height: 25px;
+    color: #dedede;
+    border-top-right-radius: 10px ;
+    border-bottom-left-radius: 10px;
+    background-color: #020e1f;
+    cursor: pointer;
+    z-index: 503;
+}
+#close-list-borrow:hover{
+    background-color: var(--second-color);
+    color: #020e1f;
+}
+#in-list-borrow{
+    position: fixed;
+    top: 18%;
+    right: 3%;
+    width: 80%;
+    height: 80%;
+    background-color: #696464;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding: 30px 10px 10px 15px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 501;
+    display: none;
+    transition: 0.3s;
+}
+.picture-book-borrow{
+    width: 50%;
+    height: 100px;
+}
+
+#list-book-borrow {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    background-color: #f9f9f9;
+}
+#list-book-borrow thead {
+    background-color: rgb(75, 184, 196);
+    color: white;
+}
+
+#list-book-borrow th {
+    padding: 10px;
+    color: #020e1f;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+#table-body-list-borrow {
+    background-color:var(--white-color);
+}
+
+#table-body-list-borrow td {
+    padding: 8px;
+    border: 1px solid #fff;
+    text-align: center;
+    font-size: 16px;
+}
+
+#table-body-list-borrow tr:hover {
+    background-color: #91a897;
+}
+
 
 @media (max-width: 768px){
     #list-book li {
@@ -656,5 +1025,19 @@ a {
     #btn-edit-content{
     top: 40%;
     left: 45%;
+    }
+    .picture-book-inCart{
+        width: 100%;
+        height: 80px;
+    }
+    .picture-book-borrow{
+        width: 100%;
+        height: 80px;
+    }
+    #in-profile{
+        right: 10%;
+    }
+    #title-profile{
+        right: 10%;
     }
 }
