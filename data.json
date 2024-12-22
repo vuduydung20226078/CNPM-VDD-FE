@@ -1,0 +1,457 @@
+{
+  "users": [
+    {
+      "userID": 1,
+      "name": "dungduyvu",
+      "accountID": 1,
+      "phone": "0329876406",
+      "address": "Ha Noi City",
+      "imageLink": "/Assets/user0.png"
+    },
+    {
+      "userID": 2,
+      "name": "Vũ Duy Dũng",
+      "accountID": 2,
+      "phone": "213131311",
+      "address": "Phúc Thọ - Hà Nội",
+      "imageLink": "/Assets/user0.png"
+    }
+  ],
+  "accounts": [
+    {
+      "accountID": 1,
+      "email": "dung0@gmail.com",
+      "username": "dung0",
+      "password": "123467213",
+      "userID": 1,
+      "createAt": "12/11/2024 12:12:12",
+      "updateAt": "12/11/2024 12:12:12",
+      "role": 0
+    },
+    {
+      "accountID": 2,
+      "email": "dung1@gmail.com",
+      "username": "dung1",
+      "password": "1234",
+      "userID": 2,
+      "createAt": "12/11/2024 12:12:12",
+      "updateAt": "12/11/2024 12:12:12",
+      "role": 1
+    }
+  ],
+  "books": [
+    {
+      "bookID": 1,
+      "title": "Doraemon",
+      "author": "Fujiko F. Fujio",
+      "category": "Truyện tranh",
+      "publishDate": "12/01/1999",
+      "description": "Bộ truyện được xem là huyền thoại của Nhật Bản. Nói về cuộc sống của một chú nhóc tên Nobita, tính tình hậu đậu và chú mèo máy Doremon đến từ thế kỉ 22 cùng những người bạn Xuka, Chaien, Xeko; để từ đó gây ra bao tiếng cười và rút ra những bài học ý nghĩa cho người xem !!",
+      "quantityTotal": 100,
+      "quantityValid": 90,
+      "imageLink": "/Assets/user0.png",
+      "rate": 9.5
+    },
+    {
+      "bookID": 2,
+      "title": "Conan",
+      "author": "Nguyen Trung Son",
+      "category": "Truyện tranh",
+      "publishDate": "12/01/2004",
+      "description": "Bộ truyện được xem là huyền thoại của Nhật Bản. Nói về cuộc sống của một chú nhóc tên Nobita, tính tình hậu đậu và chú mèo máy Doremon đến từ thế kỉ 22 cùng những người bạn Xuka, Chaien, Xeko; để từ đó gây ra bao tiếng cười và rút ra những bài học ý nghĩa cho người xem !!",
+      "quantityTotal": 88,
+      "quantityValid": 80,
+      "imageLink": "/Assets/user0.png",
+      "rate": 9.3
+    },
+    {
+      "bookID": 3,
+      "title": "One Piece",
+      "author": "Le Van Phap",
+      "category": "Truyện tranh",
+      "publishDate": "12/01/2001",
+      "description": "Bộ truyện được xem là huyền thoại của Nhật Bản. Nói về cuộc sống của một chú nhóc tên Nobita, tính tình hậu đậu và chú mèo máy Doremon đến từ thế kỉ 22 cùng những người bạn Xuka, Chaien, Xeko; để từ đó gây ra bao tiếng cười và rút ra những bài học ý nghĩa cho người xem !!",
+      "quantityTotal": 99,
+      "quantityValid": 11,
+      "imageLink": "/Assets/user0.png",
+      "rate": 9.3
+    },
+    {
+      "bookID": 4,
+      "title": "One Piece",
+      "author": "Le Van Phap",
+      "category": "Truyện tranh",
+      "publishDate": "12/01/2001",
+      "description": "Bộ truyện được xem là huyền thoại của Nhật Bản. Nói về cuộc sống của một chú nhóc tên Nobita, tính tình hậu đậu và chú mèo máy Doremon đến từ thế kỉ 22 cùng những người bạn Xuka, Chaien, Xeko; để từ đó gây ra bao tiếng cười và rút ra những bài học ý nghĩa cho người xem !!",
+      "quantityTotal": 99,
+      "quantityValid": 11,
+      "imageLink": "/Assets/user0.png",
+      "rate": 9.3
+    },
+    {
+      "bookID": 5,
+      "title": "One Piece",
+      "author": "Le Van Phap",
+      "category": "Truyện tranh",
+      "publishDate": "12/01/2001",
+      "description": "Bộ truyện được xem là huyền thoại của Nhật Bản. Nói về cuộc sống của một chú nhóc tên Nobita, tính tình hậu đậu và chú mèo máy Doremon đến từ thế kỉ 22 cùng những người bạn Xuka, Chaien, Xeko; để từ đó gây ra bao tiếng cười và rút ra những bài học ý nghĩa cho người xem !!",
+      "quantityTotal": 99,
+      "quantityValid": 11,
+      "imageLink": "/Assets/user0.png",
+      "rate": 9.3
+    },
+    {
+      "bookID": 6,
+      "title": "One Piece",
+      "author": "Le Van Phap",
+      "category": "Truyện tranh",
+      "publishDate": "12/01/2001",
+      "description": "Bộ truyện được xem là huyền thoại của Nhật Bản. Nói về cuộc sống của một chú nhóc tên Nobita, tính tình hậu đậu và chú mèo máy Doremon đến từ thế kỉ 22 cùng những người bạn Xuka, Chaien, Xeko; để từ đó gây ra bao tiếng cười và rút ra những bài học ý nghĩa cho người xem !!",
+      "quantityTotal": 99,
+      "quantityValid": 11,
+      "imageLink": "/Assets/user0.png",
+      "rate": 9.3
+    },
+    {
+      "bookID": 7,
+      "title": "One Piece",
+      "author": "Le Van Phap",
+      "category": "Truyện tranh",
+      "publishDate": "12/01/2001",
+      "description": "Bộ truyện được xem là huyền thoại của Nhật Bản. Nói về cuộc sống của một chú nhóc tên Nobita, tính tình hậu đậu và chú mèo máy Doremon đến từ thế kỉ 22 cùng những người bạn Xuka, Chaien, Xeko; để từ đó gây ra bao tiếng cười và rút ra những bài học ý nghĩa cho người xem !!",
+      "quantityTotal": 99,
+      "quantityValid": 11,
+      "imageLink": "/Assets/user0.png",
+      "rate": 9.3
+    },
+    {
+      "bookID": 8,
+      "title": "One Piece",
+      "author": "Le Van Phap",
+      "category": "Truyện tranh",
+      "publishDate": "12/01/2001",
+      "description": "Bộ truyện được xem là huyền thoại của Nhật Bản. Nói về cuộc sống của một chú nhóc tên Nobita, tính tình hậu đậu và chú mèo máy Doremon đến từ thế kỉ 22 cùng những người bạn Xuka, Chaien, Xeko; để từ đó gây ra bao tiếng cười và rút ra những bài học ý nghĩa cho người xem !!",
+      "quantityTotal": 99,
+      "quantityValid": 11,
+      "imageLink": "/Assets/user0.png",
+      "rate": 9.3
+    },
+    {
+      "bookID": 9,
+      "title": "One Piece",
+      "author": "Le Van Phap",
+      "category": "Truyện tranh",
+      "publishDate": "12/01/2001",
+      "description": "Bộ truyện được xem là huyền thoại của Nhật Bản. Nói về cuộc sống của một chú nhóc tên Nobita, tính tình hậu đậu và chú mèo máy Doremon đến từ thế kỉ 22 cùng những người bạn Xuka, Chaien, Xeko; để từ đó gây ra bao tiếng cười và rút ra những bài học ý nghĩa cho người xem !!",
+      "quantityTotal": 99,
+      "quantityValid": 11,
+      "imageLink": "/Assets/user0.png",
+      "rate": 9.3
+    },
+    {
+      "bookID": 10,
+      "title": "One Piece",
+      "author": "Le Van Phap",
+      "category": "Truyện tranh",
+      "publishDate": "12/01/2001",
+      "description": "Bộ truyện được xem là huyền thoại của Nhật Bản. Nói về cuộc sống của một chú nhóc tên Nobita, tính tình hậu đậu và chú mèo máy Doremon đến từ thế kỉ 22 cùng những người bạn Xuka, Chaien, Xeko; để từ đó gây ra bao tiếng cười và rút ra những bài học ý nghĩa cho người xem !!",
+      "quantityTotal": 99,
+      "quantityValid": 11,
+      "imageLink": "/Assets/user0.png",
+      "rate": 9.3
+    },
+    {
+      "bookID": 11,
+      "title": "One Piece",
+      "author": "Le Van Phap",
+      "category": "Truyện tranh",
+      "publishDate": "12/01/2001",
+      "description": "Bộ truyện được xem là huyền thoại của Nhật Bản. Nói về cuộc sống của một chú nhóc tên Nobita, tính tình hậu đậu và chú mèo máy Doremon đến từ thế kỉ 22 cùng những người bạn Xuka, Chaien, Xeko; để từ đó gây ra bao tiếng cười và rút ra những bài học ý nghĩa cho người xem !!",
+      "quantityTotal": 99,
+      "quantityValid": 11,
+      "imageLink": "/Assets/user0.png",
+      "rate": 9.3
+    },
+    {
+      "bookID": 12,
+      "title": "One Piece",
+      "author": "Le Van Phap",
+      "category": "Truyện tranh",
+      "publishDate": "12/01/2001",
+      "description": "Bộ truyện được xem là huyền thoại của Nhật Bản. Nói về cuộc sống của một chú nhóc tên Nobita, tính tình hậu đậu và chú mèo máy Doremon đến từ thế kỉ 22 cùng những người bạn Xuka, Chaien, Xeko; để từ đó gây ra bao tiếng cười và rút ra những bài học ý nghĩa cho người xem !!",
+      "quantityTotal": 99,
+      "quantityValid": 11,
+      "imageLink": "/Assets/user0.png",
+      "rate": 9.3
+    },
+    {
+      "bookID": 13,
+      "title": "One Piece",
+      "author": "Le Van Phap",
+      "category": "Truyện tranh",
+      "publishDate": "12/01/2001",
+      "description": "Bộ truyện được xem là huyền thoại của Nhật Bản. Nói về cuộc sống của một chú nhóc tên Nobita, tính tình hậu đậu và chú mèo máy Doremon đến từ thế kỉ 22 cùng những người bạn Xuka, Chaien, Xeko; để từ đó gây ra bao tiếng cười và rút ra những bài học ý nghĩa cho người xem !!",
+      "quantityTotal": 99,
+      "quantityValid": 11,
+      "imageLink": "/Assets/user0.png",
+      "rate": 9.3
+    },
+    {
+      "bookID": 14,
+      "title": "One Piece",
+      "author": "Le Van Phap",
+      "category": "Truyện tranh",
+      "publishDate": "12/01/2001",
+      "description": "Bộ truyện được xem là huyền thoại của Nhật Bản. Nói về cuộc sống của một chú nhóc tên Nobita, tính tình hậu đậu và chú mèo máy Doremon đến từ thế kỉ 22 cùng những người bạn Xuka, Chaien, Xeko; để từ đó gây ra bao tiếng cười và rút ra những bài học ý nghĩa cho người xem !!",
+      "quantityTotal": 99,
+      "quantityValid": 11,
+      "imageLink": "/Assets/user0.png",
+      "rate": 9.3
+    },
+    {
+      "bookID": 15,
+      "title": "One Piece",
+      "author": "Le Van Phap",
+      "category": "Truyện tranh",
+      "publishDate": "12/01/2001",
+      "description": "Bộ truyện được xem là huyền thoại của Nhật Bản. Nói về cuộc sống của một chú nhóc tên Nobita, tính tình hậu đậu và chú mèo máy Doremon đến từ thế kỉ 22 cùng những người bạn Xuka, Chaien, Xeko; để từ đó gây ra bao tiếng cười và rút ra những bài học ý nghĩa cho người xem !!",
+      "quantityTotal": 99,
+      "quantityValid": 11,
+      "imageLink": "/Assets/user0.png",
+      "rate": 9.3
+    },
+    {
+      "bookID": 16,
+      "title": "One Piece",
+      "author": "Le Van Phap",
+      "category": "Truyện tranh",
+      "publishDate": "12/01/2001",
+      "description": "Bộ truyện được xem là huyền thoại của Nhật Bản. Nói về cuộc sống của một chú nhóc tên Nobita, tính tình hậu đậu và chú mèo máy Doremon đến từ thế kỉ 22 cùng những người bạn Xuka, Chaien, Xeko; để từ đó gây ra bao tiếng cười và rút ra những bài học ý nghĩa cho người xem !!",
+      "quantityTotal": 99,
+      "quantityValid": 11,
+      "imageLink": "/Assets/user0.png",
+      "rate": 9.3
+    },
+    {
+      "bookID": 17,
+      "title": "One Piece",
+      "author": "Le Van Phap",
+      "category": "Truyện tranh",
+      "publishDate": "12/01/2001",
+      "description": "Bộ truyện được xem là huyền thoại của Nhật Bản. Nói về cuộc sống của một chú nhóc tên Nobita, tính tình hậu đậu và chú mèo máy Doremon đến từ thế kỉ 22 cùng những người bạn Xuka, Chaien, Xeko; để từ đó gây ra bao tiếng cười và rút ra những bài học ý nghĩa cho người xem !!",
+      "quantityTotal": 99,
+      "quantityValid": 11,
+      "imageLink": "/Assets/user0.png",
+      "rate": 9.3
+    },
+    {
+      "bookID": 18,
+      "title": "One Piece",
+      "author": "Le Van Phap",
+      "category": "Truyện tranh",
+      "publishDate": "12/01/2001",
+      "description": "Bộ truyện được xem là huyền thoại của Nhật Bản. Nói về cuộc sống của một chú nhóc tên Nobita, tính tình hậu đậu và chú mèo máy Doremon đến từ thế kỉ 22 cùng những người bạn Xuka, Chaien, Xeko; để từ đó gây ra bao tiếng cười và rút ra những bài học ý nghĩa cho người xem !!",
+      "quantityTotal": 99,
+      "quantityValid": 11,
+      "imageLink": "/Assets/user0.png",
+      "rate": 9.3
+    },
+    {
+      "bookID": 19,
+      "title": "One Piece",
+      "author": "Le Van Phap",
+      "category": "Truyện tranh",
+      "publishDate": "12/01/2001",
+      "description": "Bộ truyện được xem là huyền thoại của Nhật Bản. Nói về cuộc sống của một chú nhóc tên Nobita, tính tình hậu đậu và chú mèo máy Doremon đến từ thế kỉ 22 cùng những người bạn Xuka, Chaien, Xeko; để từ đó gây ra bao tiếng cười và rút ra những bài học ý nghĩa cho người xem !!",
+      "quantityTotal": 99,
+      "quantityValid": 11,
+      "imageLink": "/Assets/user0.png",
+      "rate": 9.3
+    },
+    {
+      "bookID": 20,
+      "title": "One Piece",
+      "author": "Le Van Phap",
+      "category": "Truyện tranh",
+      "publishDate": "12/01/2001",
+      "description": "Bộ truyện được xem là huyền thoại của Nhật Bản. Nói về cuộc sống của một chú nhóc tên Nobita, tính tình hậu đậu và chú mèo máy Doremon đến từ thế kỉ 22 cùng những người bạn Xuka, Chaien, Xeko; để từ đó gây ra bao tiếng cười và rút ra những bài học ý nghĩa cho người xem !!",
+      "quantityTotal": 99,
+      "quantityValid": 11,
+      "imageLink": "/Assets/user0.png",
+      "rate": 9.3
+    }
+  ],
+  "comments": [
+    {
+      "commentID": 1,
+      "bookID": 1,
+      "userID": 1,
+      "comment": "Nên mượn quyền này!",
+      "lastUpdate": "12/07/2024 24:00:00"
+    },
+    {
+      "commentID": 3,
+      "bookID": 2,
+      "userID": 1,
+      "comment": "Truyện rất hay!! Nhưng tôi nghĩ những người không thích chủ đề này sẽ đánh giá thấp nó A",
+      "lastUpdate": "12/07/2024 22:00:00"
+    },
+    {
+      "commentID": 4,
+      "bookID": 2,
+      "userID": 2,
+      "comment": "Truyện rất hay!! Nhưng tôi nghĩ những người không thích chủ đề này sẽ đánh giá thấp nó B",
+      "lastUpdate": "12/07/2024 21:00:00"
+    },
+    {
+      "commentID": 5,
+      "bookID": 3,
+      "userID": 1,
+      "comment": "Truyện rất hay!! Nhưng tôi nghĩ những người không thích chủ đề này sẽ đánh giá thấp nó A",
+      "lastUpdate": "12/07/2024 22:00:00"
+    },
+    {
+      "commentID": 6,
+      "bookID": 3,
+      "userID": 2,
+      "comment": "Truyện rất hay!! Nhưng tôi nghĩ những người không thích chủ đề này sẽ đánh giá thấp nó BAC",
+      "lastUpdate": "20/12/2024 14:31:09"
+    },
+    {
+      "commentID": 7,
+      "userID": 2,
+      "bookID": 1,
+      "comment": "test",
+      "lastUpdate": "11/12/2024 14:51:10"
+    },
+    {
+      "commentID": 9,
+      "bookID": 1,
+      "userID": 2,
+      "comment": "oke",
+      "lastUpdate": "11/12/2024 15:29:42"
+    },
+    {
+      "commentID": 22,
+      "bookID": 2,
+      "userID": 2,
+      "comment": "binhluan21",
+      "lastUpdate": "17/12/2024 05:00:26"
+    },
+    {
+      "commentID": 2,
+      "bookID": 2,
+      "userID": 2,
+      "comment": "post ",
+      "lastUpdate": "15/12/2024 20:00:19"
+    },
+    {
+      "commentID": 8,
+      "bookID": 1,
+      "userID": 2,
+      "comment": "cmt",
+      "lastUpdate": "15/12/2024 15:45:44"
+    },
+    {
+      "commentID": 10,
+      "bookID": 1,
+      "userID": 2,
+      "comment": "abc",
+      "lastUpdate": "15/12/2024 18:20:09"
+    },
+    {
+      "commentID": 11,
+      "bookID": 1,
+      "userID": 2,
+      "comment": "q2we",
+      "lastUpdate": "15/12/2024 18:24:42"
+    },
+    {
+      "commentID": 12,
+      "bookID": 1,
+      "userID": 2,
+      "comment": "12345he",
+      "lastUpdate": "17/12/2024 04:43:26"
+    },
+    {
+      "commentID": 13,
+      "bookID": 1,
+      "userID": 2,
+      "comment": "33",
+      "lastUpdate": "15/12/2024 19:46:15"
+    }
+  ],
+  "rates": [
+    {
+      "rateID": 1,
+      "userID": 2,
+      "bookID": 1,
+      "rate": 7
+    },
+    {
+      "rateID": 2,
+      "userID": 2,
+      "bookID": 2,
+      "rate": 8
+    },
+    {
+      "rateID": 3,
+      "userID": 2,
+      "bookID": 3,
+      "rate": 7
+    },
+    {
+      "rateID": 4,
+      "userID": 1,
+      "bookID": 1,
+      "rate": 10
+    },
+    {
+      "rateID": 5,
+      "userID": 1,
+      "bookID": 2,
+      "rate": 8
+    },
+    {
+      "rateID": 6,
+      "userID": 1,
+      "bookID": 3,
+      "rate": 7
+    }
+  ],
+  "cart": [
+    {
+      "userID": 2,
+      "bookID": [
+        2,
+        3,
+        4,
+        5,
+        1
+      ]
+    },
+    {
+      "userID": 1,
+      "bookID": [
+        1,
+        2
+      ]
+    }
+  ],
+  "borrows": [
+    {
+      "borrowID": 1,
+      "userID": 2,
+      "bookID": 1,
+      "borrowDate": "18/12/2024",
+      "dueDate": "25/12/2024"
+    },
+    {
+      "borrowID": 2,
+      "userID": 2,
+      "bookID": 2,
+      "borrowDate": "18/12/2024",
+      "dueDate": "25/12/2024"
+    }
+  ]
+}
