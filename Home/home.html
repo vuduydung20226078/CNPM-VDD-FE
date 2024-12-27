@@ -20,43 +20,44 @@
                     <span class="nav_logo-text">LM Systems</span>
                 </a>
                 <div class="nav_toggle" id="nav_toggle">
-                    <ion-icon name="chevron-back-outline"></ion-icon>
+                    <ion-icon name="chevron-back-outline" title="Thu gọn"></ion-icon>
                 </div>
                 <ul class="nav_list">
                     <a href="#" class="nav_link active">
-                        <ion-icon name="home" class="nav_icon"></ion-icon>
+                        <ion-icon name="home" class="nav_icon" title="Trang chủ"></ion-icon>
                         <span class="nav_text">Trang chủ</span>
                     </a>
                     <a href="#" class="nav_link">
-                        <ion-icon name="book" class="nav_icon"></ion-icon>
+                        <ion-icon name="book" class="nav_icon" title="Quản lý sách"></ion-icon>
                         <span class="nav_text">Quản lý sách</span>
                     </a>
                     <a href="#" class="nav_link">
-                        <ion-icon name="people" class="nav_icon"></ion-icon>
+                        <ion-icon name="people" class="nav_icon" title="Quản lý người dùng"></ion-icon>
                         <span class="nav_text">Quản lý người dùng</span>
                     </a>
                 </ul>
             </div>
             <div>
                 <a href="./loginRegister.html" class="nav_link" id="logout">
-                    <ion-icon name="log-out" class="nav_icon"></ion-icon>
+                    <ion-icon name="log-out" class="nav_icon" title="Đăng xuất"></ion-icon>
                     <span class="nav_text">Đăng xuất</span>
                 </a>
             </div>
         </div>
     </div>
     <!-- Dropdown menu profile -->
+    <ion-icon name="arrow-back-circle" id="arrow-back-icon" title="Quay lại"></ion-icon>
     <div class="menu-profile">
         <div>
             <input id="search-info" type = "text" placeholder="Bạn muốn tìm sách nào?">
             <ion-icon name="search" id="icon-search"></ion-icon>
         </div>
         <div class="menu-profile-icon">
-            <ion-icon name="cart" id="cart-icon"></ion-icon>
+            <ion-icon name="cart" id="cart-icon" title="Danh sách quan tâm"></ion-icon>
             <div id="cart-count-book" class="count-info">0</div>
-            <ion-icon name="notifications" class="noti-icon"></ion-icon>
+            <ion-icon name="notifications" class="noti-icon" title="Thông báo"></ion-icon>
             <div id="count-noti" class="count-info">0</div>
-            <img src="\Assets\user0.png" class="user-pic" id="userpic">
+            <img src="\Assets\user0.png" class="user-pic" id="userpic" title="Thông tin tài khoản">
         </div>
         <div class="drop-menu-profile" id="drop-menu-profile">
             <a id="username" href="#"> <img src="\Assets\user0.png" class="user-pic-in">Username0 </a>
@@ -67,7 +68,7 @@
                 <ion-icon name="book"></ion-icon> Danh sách mượn
             </a>
             <a href="#">
-                <ion-icon name="help-circle"></ion-icon> Hỗ trợ
+                <ion-icon name="help-circle"></ion-icon> Hỗ trợ: 0329876604
             </a>
             <a href="#">
                 <ion-icon name="swap-horizontal"></ion-icon> Chuyển tài khoản
@@ -76,9 +77,14 @@
     </div>
     <!-- show list books -->
     <div id="container-lib">
-        <div class="filter-by-status">
-            <h3>Sách mượn nhiều trong tháng</h3>
-        </div>
+        <button class="filter-by-status" id="filter-by-status">
+            <div>Tất cả sách trong kho</div>
+            <ion-icon name="chevron-down-outline" id="chevron-filter-status"></ion-icon>
+        </button>
+        <button id="option-filter-status">
+            <div class="options">Sách mượn nhiều trong tháng</div>
+            <div class="options">Sách có điểm đánh giá cao</div>
+        </button>
         <ul id="list-book">
             <li>
                 <div class="book-item">
@@ -101,7 +107,7 @@
                         </button>
                             
                         </a>
-                        <span id="category">Truyện tranh</span>
+                        <div id="category">Truyện tranh</div>
                     </div>
                     <div class="book-info">
                         <h2>Doraemon</h3>
@@ -153,10 +159,26 @@
             </li>
         </ul>
     </div>
-    
+    <!-- Lọc, .... -->
+    <section id="filter-by">
+        <div>
+            <input id="filter-category" type = "text" placeholder="Bạn muốn tìm thể loại nào?">
+            <ion-icon name="search" id="icon-filter-category"></ion-icon>
+        </div>
+        <div id="option-category"></div>
+        <div>
+            <input id="filter-author" type = "text" placeholder="Bạn muốn tìm tác giả nào?">
+            <ion-icon name="search" id="icon-filter-author"></ion-icon>
+        </div>
+        <div id="option-author"></div>
+    </section>
+
+    <!-- Chi tiết sách -->
+    <button id="title-details-book">Chi tiết sách
+        <ion-icon name="close-outline" id="close-details-book"></ion-icon>
+    </button>
     <section class="see-book-details">
-        <ion-icon name="close" class="close-section-icon"></ion-icon>
-        <div class="details-overview">
+        <div class="details-overview" id="details-overview">
             <img src="/Assets/user0.png" id="picture-book" alt="Ảnh bìa sách">
             <h2>Chaien </h2>
             <h3 id="rate-count"> 
@@ -188,46 +210,6 @@
                 <button id="text-post-cmt">Đăng </button>
             </div>
             <div id="section-content">
-                <li>
-                    <div class="area-content-cmt">
-                        <span class="avatar">
-                            <img class="user-pic-cmt" src="/Assets/user0.png">
-                        </span>
-                        <div class="cmt-content">
-                            <p class="usernameF">duydung0036
-                                <span class="time-cmt">2 giờ trước</span>
-                            </p>
-                            <p>Truyện rất hay!! Nhưng tôi nghĩ những người không thích chủ đề này sẽ đánh giá thấp nó</p>
-                        </div> 
-                        <span class="chevron-icon"><ion-icon name="chevron-down-outline"></ion-icon></span>
-                        <button class="delete-edit-cmt">
-                            <ul>
-                                <li>Xóa bình luận</li>
-                                <li>Sửa bình luận</li>
-                            </ul>
-                        </button>
-                    </div>    
-                </li>
-                 <li>
-                    <div class="area-content-cmt">
-                        <span class="avatar">
-                            <img class="user-pic-cmt" src="/Assets/user0.png">
-                        </span>
-                        <div class="cmt-content">
-                            <p class="usernameF">duydung0036
-                                <span class="time-cmt">2 giờ trước</span>
-                            </p>
-                            <p>Truyện rất hay!! Nhưng tôi nghĩ những người không thích chủ đề này sẽ đánh giá thấp nó</p>
-                        </div> 
-                        <span class="chevron-icon"><ion-icon name="chevron-down-outline"></ion-icon></span>
-                        <button class="delete-edit-cmt">
-                            <ul>
-                                <li>Xóa bình luận</li>
-                                <li>Sửa bình luận</li>
-                            </ul>
-                        </button>
-                    </div>    
-                </li>       
             </div>
         </div>
     </section>
@@ -239,16 +221,19 @@
         </div>
     </button>     
     <button id="btn-edit-content">
-        <div contenteditable="true" id="content-to-edit">Truyện rất hay!! Nhưng tôi nghĩ những người không thích chủ đề này sẽ đánh giá thấp nó A Truyện rất hay!! Nhưng A</div>
+        <div contenteditable="true" id="content-to-edit"></div>
         <div id="actions-edit">
             <span id="confirm-to-edit">Xác nhận</span>
             <span id="delete-action">Hủy</span>
         </div>
     </button>
+    <!-- thông báo chung -->
     <div id="notification" class="notification">
         <ion-icon name="checkmark-outline"></ion-icon> Đăng nhập thành công!
     </div>
+    <!-- vô hiệu hóa scroll thẻ body -->
     <div id="overlay" class="overlay"></div>
+    <!--  thông tin trong giỏ chờ -->
     <button id="title-cart">Thông tin trong giỏ (Danh sách quan tâm)
         <ion-icon name="close-outline" id="close-cart"></ion-icon>
     </button>
@@ -267,30 +252,10 @@
                 </tr>
             </thead>
             <tbody id="table-body-cart">
-                <tr id="book-inCart-5">
-                    <td>1</td>
-                    <td><img src="/Assets/user0.png" class="picture-book-inCart"></td>
-                    <td>Dế mèn phiêu lưu ký</td>
-                    <td><input class="input-quantity-inCart" type="number" min="1" max="30" value="1" required oninput="validateAndCorrectNumber(this)"></td>
-                    <td>
-                        <button onclick="deleteElementInCart(5)">Xóa</button>
-                        <button onclick="pickElementInCart(5, this)">Chọn</button>
-                    </td>
-                </tr>
-                <tr id="book-inCart-6">
-                    <td>1</td>
-                    <td><img src="/Assets/user0.png" class="picture-book-inCart"></td>
-                    <td>Dế mèn phiêu lưu ký</td>
-                    <td><input class="input-quantity-inCart" type="number" min="1" max="30" value="1" required oninput="validateAndCorrectNumber(this)"></td>
-                    <td>
-                        <button onclick="deleteElementInCart(6)">Xóa</button>
-                        <button onclick="pickElementInCart(6, this)">Chọn</button>
-                    </td>
-                </tr>
-                
             </tbody>
         </table>
     </section> 
+    <!-- Thông tin cá nhân (profile) -->
     <button id="title-profile">Thông tin cá nhân
         <ion-icon name="close-outline" id="close-profile"></ion-icon>
     </button>
@@ -299,12 +264,12 @@
         <div><b>Họ và tên:</b></div>
         <div class="info-profile" id="profile-name" contenteditable="false">Vu Duy Dung</div>
         <div><b>Số điện thoại:</b></div>
-        <div class="info-profile" id="profile-phone" contenteditable="false">Vu Duy Dung</div>
+        <div class="info-profile" id="profile-phone" contenteditable="false">0329876555</div>
         <div><b>Địa chỉ:</b></div>
-        <div class="info-profile" id="profile-address" contenteditable="false">Vu Duy Dung Vu Duy Dung Vu Duy Dung Vu Duy Dung Vu Duy Dung</div>
+        <div class="info-profile" id="profile-address" contenteditable="false">Ha Noi</div>
         <button id="update-profile">Cập nhật</button> 
     </section>
-
+    <!-- Danh sách mượn  -->
     <button id="title-list-borrow">Thông tin danh sách mượn
         <ion-icon name="close-outline" id="close-list-borrow"></ion-icon>
     </button>

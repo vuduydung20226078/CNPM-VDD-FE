@@ -271,51 +271,108 @@ a {
     z-index: 97;
 }
 .filter-by-status {
+    position: absolute;
+    width: 200px;
+    height: 45px;
+    top: -30px;
+    left: 270px;
+    width: 400px;
     text-align: center;
-    margin: 30px 0;
+    background-color: #867f7f;
+    border-radius: 5px;
+    cursor: pointer;
 }
-.filter-by-status h3{
+.filter-by-status div{
     font-size: 18px;
-    color:#444;
-    border: 1px solid #bebebe;
-    display: inline-block;
+    color:#dedede;
     padding: 10px 20px;
     text-transform: uppercase;
     font-weight: 600;
+}
+#chevron-filter-status{
+    position: absolute;
+    font-size: 200%;
+    right: 5px;
+    top: 6px;
+    color: #dedede;
+}
+#option-filter-status{
+    position: absolute;
+    padding: 0;
+    width: 200px;
+    height: 88px;
+    top: 15px;
+    left: 270px;
+    width: 400px;
+    text-align: center;
+    background-color: #867f7f;
     border-radius: 5px;
+    cursor: pointer;
+    z-index: 200;
+    transform: scaleY(0);
+    transform-origin: top;
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+#option-filter-status.active {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+}
+#option-filter-status div{
+    font-size: 18px;
+    color:#dedede;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-bottom: 1px solid #444;
+}
+#option-filter-status div:hover{
+    background-color: black;
 }
 #list-book{
+    position: relative;
+    top: 40px;
     display: flex;
     flex-wrap: wrap;
-    padding-left: 10px;
+    padding-left: 30px;
+    padding-bottom: 20px;
+    width: 75%;
+    background-color: #d6d2d2;
+    box-shadow: 2px -2px 4px #444;
+    border-radius: 5px;
 } 
 #list-book li {
-    flex-basis: 20%;
-    margin-bottom: 20px;
+    flex-basis: 25%;
+    margin: 20px 0;
     padding: 10px 10px;
     position: relative;
     border-left: 1px solid #bebebe;
-   
-  
 }
 .book-top {
     color: #444;
     border-bottom: 1px solid #bebebe;
     width: 200px;
-    height: 220px;
+    height: 250px;
+}
+.book-info-title{
+    line-height: 25px;
+}
+.book-info .author {
+    line-height: 20px;
 }
 #list-book li img{
     max-width: 90%;
     max-height: 90%;
 }
 #list-book li img:hover{
-    max-width: 95%;
+    width: 90%;
 }
 .book-info {
     line-height: 8px;
 }
 .add-to-cart{
-    position: relative;
+    position: absolute;
+    bottom: -30px;
     display: flex;
     justify-content: space-between;
     font-size: 14px;
@@ -334,14 +391,13 @@ a {
 .view-detail {
     position: absolute;
     top: -200px;
-    right: -170px;
+    right: -150px;
     background-color: #a2a2a2;
     text-align: left;
-    height: 250px;
+    height: 280px;
     width: 250px;
     padding-left: 10px;
     line-height: 8px;
-    z-index: 100;
     border-radius: 8px;
     cursor: pointer;
     transform: scale(0);
@@ -353,6 +409,7 @@ a {
 }
 .book-picture:hover .view-detail{
     transform: scale(1);
+    z-index: 300;
 }
 .view-detail h2 {
     position: relative;
@@ -361,12 +418,11 @@ a {
     word-wrap: break-word;
 }
 .view-detail .status-rate { 
-    margin-top: 10px;
+    position: relative;
+    top: -25px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-  
-    top: 50px; 
     white-space: nowrap;
     width: 100%;
 }
@@ -391,7 +447,7 @@ a {
 
 .view-detail p{
     position: relative;
-    top: -20px;
+    top: -45px;
     margin-top: 10px;
     color: var(--first-color);
 }
@@ -408,17 +464,54 @@ a {
     -webkit-box-orient: vertical; 
 }
   /* see details of book */
+#title-details-book{
+    position: fixed;
+    top: 15%;
+    left: 35%;
+    width: 500px;
+    height: 40px;
+    background-color: black;
+    z-index: 502;
+    font-size: 24px;
+    font-weight: bolder;
+    border: 1px solid #dedede;
+    border-left: none;
+    border-right: none;
+    border-top:none;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    color: #dedede;
+    z-index: 502;
+    display: none;
+    transition: 0.3s;
+}#close-details-book{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 25px;
+    height: 25px;
+    color: black;
+    border-top-right-radius: 10px ;
+    border-bottom-left-radius: 10px;
+    background-color: #cbdcf5;
+    cursor: pointer;
+    z-index: 503;
+}
+#close-details-book:hover{
+    background-color: var(--second-color);
+    color: #020e1f;
+}
 .see-book-details{
     position: fixed;
     border-radius: 8px;
     left: 35%;
-    top: 100px;
+    top: 20%;
     width: 500px;
     height: 500px;
     padding-right: 5px ;
     background-color: black;
     border-radius: 2px solid #333;
-    box-shadow: 1px 2px 4px #333;
+    box-shadow: 2px 2px 8px #333;
     z-index: 501;
     color: var(--white-color);
     overflow-y: auto;
@@ -431,8 +524,9 @@ a {
 }
 .see-book-details #picture-book {
     position: relative;
+    top: 10px;
     width: 150px;
-    height: 150px;
+    height: 200px;
     padding-left: 10px;
     padding-top: 10px;
     cursor: pointer;
@@ -453,20 +547,6 @@ a {
     margin-top: 0px;
     margin-bottom: 5px;
  
-}
-.close-section-icon {
-    position: absolute;
-    z-index: 10000;
-    left: 95%;
-    width: 25px;
-    height: 25px;
-    background-color: #a2a2a2;
-    border-bottom-left-radius: 6px;
-    cursor: pointer;
-}
-.close-section-icon:hover {
-    background-color: var(--second-color);
-    color: black;
 }
 #rate-count {
     position: absolute;
@@ -591,7 +671,7 @@ a {
     height: 80px;
     top: 300px;
     left: 640px;
-    z-index: 500;
+    z-index: 504;
     display: none;
 }
 #actions {
@@ -702,7 +782,7 @@ a {
     right: 3%;
     width: 80%;
     height: 8%;
-    background-color: #696464;
+    background-color: #c7bdbd;
     z-index: 502;
     font-size: 24px;
     font-weight: bolder;
@@ -742,9 +822,10 @@ a {
     right: 3%;
     width: 80%;
     height: 80%;
-    background-color: #696464;
+    background-color: #c9c0c0;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
+    box-shadow: 2px 2px 8px #333;
     padding: 30px 10px 10px 15px;
     overflow-y: auto;
     overflow-x: hidden;
@@ -758,7 +839,7 @@ a {
 #in-cart.active
 .picture-book-inCart{
     width: 50%;
-    height: 100px;
+    height: 120px;
 }
 
 #list-info-cart {
@@ -928,7 +1009,7 @@ a {
     right: 3%;
     width: 80%;
     height: 8%;
-    background-color: #696464;
+    background-color: #c7bdbd;
     z-index: 502;
     font-size: 24px;
     font-weight: bolder;
@@ -965,7 +1046,7 @@ a {
     right: 3%;
     width: 80%;
     height: 80%;
-    background-color: #696464;
+    background-color: #c9c0c0;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
     padding: 30px 10px 10px 15px;
@@ -1012,9 +1093,71 @@ a {
 #table-body-list-borrow tr:hover {
     background-color: #91a897;
 }
-
-
+#filter-by{
+    position: fixed;
+    right: 0;
+    top: 145px;
+    width: 235px;
+    height: 550px;
+    background-color: #d6d2d2;
+    box-shadow: -2px -2px 4px #444;
+    border-radius: 5px;
+    z-index: 100;
+}
+#filter-category, #filter-author{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 200px;
+    height: 30px;
+    border-radius: 20px;
+    padding: 5px 10px;
+    border: 2px solid #444;
+}
+#filter-author {
+    top: 300px;
+}
+#icon-filter-category, #icon-filter-author{
+    position: absolute;
+    top: 26px;
+    right: 25px;
+    color: black;
+    cursor: pointer;
+}
+#icon-filter-author{
+    top: 305px;
+}
+#option-category, #option-author{
+    position: absolute;
+    top: 60px;
+    left: 20px;
+    width: 200px;
+    height: 200px;
+    overflow-y: auto;
+    background-color: #dedede;
+    border-radius: 3px;
+    
+}
+#option-author{
+    top: 340px;
+}
+#option-category div:hover, #option-author div:hover{
+    cursor: pointer;
+    background-color: #444;
+    color: #dedede;
+}
+#arrow-back-icon{
+    position: relative;
+    top: 60px;
+    right: 0;
+    font-size: 200%;
+    cursor: pointer;
+    z-index: 200;
+}
 @media (max-width: 768px){
+    #list-book{
+        width: 100%;
+    }
     #list-book li {
         flex-basis: 50%;
     }
@@ -1032,7 +1175,7 @@ a {
     }
     .picture-book-borrow{
         width: 100%;
-        height: 80px;
+        height: 100px;
     }
     #in-profile{
         right: 10%;
@@ -1040,4 +1183,14 @@ a {
     #title-profile{
         right: 10%;
     }
+    .filter-by-status{
+        left: 100px;
+    }
+    #option-filter-status{
+        left: 100px;
+        z-index: 1000;
+    }
+    /* #arrow-back-icon{
+        right: 65%;
+    } */
 }
