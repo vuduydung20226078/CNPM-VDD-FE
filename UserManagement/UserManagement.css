@@ -1,0 +1,560 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+:root {
+    --first-color: black;
+    --second-color: #F5A623;
+    --white-color: #ededed;
+
+    --body-font: 'Open Sans', sans-serif;
+}
+
+:root {
+    --z-back: -10;
+    --z-normal: 1;
+    --z-tooltrip: 10;
+    --z-fixed: 100;
+    --z-modal: 1000;
+}
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+
+body {
+    position: relative;
+    margin: 0.5rem;
+    padding: 1rem 0 0 16rem;
+    padding-left: 228px;
+    font-family: var(--body-font);
+    min-height: 100vh;
+    background: var(--white-color);
+    transition: 0.5s
+}
+
+ul,
+li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+}
+
+a {
+    text-decoration: none;
+}
+/* thanh navbar */
+.l-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 58px;
+    height: 100vh;
+    background: black;
+    padding: 1.25rem 0.5rem 2rem;
+    transition: 0.5s;
+    z-index: var(--z-modal);
+}
+
+.nav {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nav_logo {
+    position: relative;
+    top: 20px;
+    right: -10px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 0 0.1rem;
+}
+
+.nav-logo-icon {
+    margin-right: 1.2rem;
+    width: 30px;
+    height: 30px;
+    color: #b2cb40;
+}
+
+.nav_logo-text {
+    font-size: 1.4rem;
+    color: #b2cb40;
+    font-weight: 700;
+}
+
+.nav_toggle {
+    position: absolute;
+    top: 2rem;
+    right: -0.5rem;
+    width: 18px;
+    height: 18px;
+    background: var(--second-color);
+    border-radius: 50%;
+    font-size: 200%;
+    color: var(--first-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.nav_link {
+    position: relative;
+    top: 40px;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    margin-bottom: 1.2rem;
+    border-radius: 0.5rem;
+    color: var(--white-color);
+    transition: 0.5s;
+}
+
+.nav_link:hover {
+    background: var(--second-color);
+    color: var(--first-color);
+}
+
+.nav_icon {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+    
+}
+
+.nav_text {
+    font-weight: 550;
+}
+
+#logout {
+    position: relative;
+    top: -5px;
+}
+
+.show {
+    width: 228px;
+}
+
+.l-navbar:not(.show) .nav_text {
+    display: none;
+}
+
+.l-navbar:not(.show) .nav_logo-text {
+    display: none;
+}
+
+.rotate {
+    transform: rotate(180deg);
+    transition: 0.2s;
+}
+/* mở rộng trang => nội dung kéo giãn theo */
+.expander {
+    padding: 1rem 0 0 5rem;
+    padding-left: 58x;
+}
+
+.active {
+    background: var(--second-color);
+    color: var(--first-color);
+    transition: 0.3s;
+}
+/* drop menu profile */
+
+.user-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid #333;
+}
+
+.noti-icon, #cart-icon {
+    font-size: 150%;
+    cursor: pointer;
+    color: var(--white-color);
+}
+
+.menu-profile {
+    width: 100%;
+    background-color: black;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    z-index: 201;
+}
+
+.menu-profile-icon {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+
+.user-pic-in {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.drop-menu-profile {
+    position: fixed;
+    top: 30px;
+    right: 45px;
+    background-color: var(--first-color);
+    border: 1px solid #444;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    overflow: hidden;
+    flex-direction: column;
+    z-index: var(--z-modal);
+    transform: scale(0);
+    transition: transform .5s ease, height .2s ease;
+
+}
+
+.drop-menu-profile.active {
+    transform: scale(1);
+}
+
+.drop-menu-profile a {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.drop-menu-profile a:hover {
+    background-color: var(--second-color);
+    color: var(--first-color);
+}
+
+.drop-menu-profile a ion-icon {
+    margin-right: 8px;
+}
+
+.drop-menu-profile a .user-pic-in {
+    margin-right: 8px;
+}
+
+  .container {
+    position: relative;
+    top: 30px;
+    width: 85%;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .container>h1 {
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bolder;
+  }
+  .bookModal-content h2 {
+    text-align: center ;
+    font-size: xx-large ;
+    font-weight: bolder ;
+  }
+  .modal-content>h2 {
+    text-align: center;
+    font-size: x-large;
+    font-weight: bolder;
+  }
+  .modal-content h3 {
+    text-align: center;
+    font-size: large;
+    font-weight: bolder;
+  }
+  
+  .search-bar {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+  }
+  
+  input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .container button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+  .container button:hover {
+    background-color: #0056b3;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+  
+  table th,
+  table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center
+  }
+  
+  table th {
+    background-color: #f2f2f2;
+  }
+  
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 50%;
+    height: 500px;
+    overflow-y: auto;
+    position: relative;
+  }
+  .modal-content button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+  .modal-content button:hover{
+    background-color: #0056b3;
+  }
+  #close-modal {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 25px;
+    height: 25px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color: #007bff;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  #close-modal:hover{
+    background-color: #0056b3;
+  }
+  .modal-content-book {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    width: 400px;
+    position: relative;
+    margin: 0; 
+    place-items: center;
+  }
+  
+  .modal-content-book .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
+  
+  
+/* Định nghĩa chiều rộng cho từng cột */
+#borrowedBooksTable th:nth-child(1), 
+#borrowedBooksTable td:nth-child(1) {
+  width: 5%; /* Chiều rộng cố định cho Borrow ID */
+}
+
+#borrowedBooksTable th:nth-child(2), 
+#borrowedBooksTable td:nth-child(2) {
+  width: 5%; /* Chiều rộng cố định cho User ID */
+}
+
+#borrowedBooksTable th:nth-child(3), 
+#borrowedBooksTable td:nth-child(3) {
+  width: 40%; /* Chiều rộng cố định cho Book ID */
+}
+
+#borrowedBooksTable th:nth-child(4), 
+#borrowedBooksTable td:nth-child(4) {
+  width: 20%; /* Cột Book Title rộng hơn để chứa tiêu đề sách dài */
+}
+
+#borrowedBooksTable th:nth-child(5), 
+#borrowedBooksTable td:nth-child(5) {
+  width: 20%; /* Chiều rộng cho Borrow Date */
+}
+
+#borrowedBooksTable th:nth-child(6), 
+#borrowedBooksTable td:nth-child(6) {
+  width: 10%; /* Chiều rộng cho Due Date */
+}
+ /* see details of book */
+#title-details-book{
+    position: fixed;
+    top: 15%;
+    left: 35%;
+    width: 500px;
+    height: 40px;
+    background-color: #333;
+    z-index: 502;
+    font-size: 24px;
+    font-weight: bolder;
+    border: 1px solid #dedede;
+    border-left: none;
+    border-right: none;
+    border-top:none;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    color: #dedede;
+    z-index: 502;
+    display: none;
+    transition: 0.3s;
+}
+#close-details-book{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 25px;
+    height: 25px;
+    color: black;
+    border-top-right-radius: 10px ;
+    border-bottom-left-radius: 10px;
+    background-color: #cbdcf5;
+    cursor: pointer;
+    z-index: 503;
+}
+#close-details-book:hover{
+    background-color: var(--second-color);
+    color: #020e1f;
+}
+.see-book-details{
+    position: fixed;
+    border-radius: 8px;
+    left: 35%;
+    top: 20%;
+    width: 500px;
+    height: 500px;
+    padding-right: 5px ;
+    background-color: #dedede;
+    border-radius: 2px solid #333;
+    box-shadow: 2px 2px 8px #333;
+    z-index: 501;
+    color: var(--white-color);
+    overflow-y: auto;
+    overflow-x: hidden;
+    transform: scale(0);
+    transition: transform .3s ease;
+} 
+.see-book-details.active{
+    transform: scale(1);
+}
+.see-book-details #picture-book {
+    position: relative;
+    /* align-items: center; */
+    top: 10px;
+    width: 150px;
+    height: 200px;
+    padding-left: 10px;
+    padding-top: 10px;
+    margin-bottom: 110px;
+    cursor: pointer;
+    
+}
+.see-book-details button {
+  position: absolute;
+  left: 220px;
+  width: 60px;
+  height: 25px;
+  background-color: #007bff;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.see-book-details button:hover{
+  background-color: #0056b3;
+}
+.see-book-details h2 {
+    position: relative;
+    max-width: 55%;
+    height: 75px;
+    top: -170px;
+    left: 180px;
+    margin-bottom: 10px;
+}
+.details-overview p{
+    position: relative;
+    color: black;
+    top: -90px;
+    padding-left: 10px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+ 
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: none; 
+    z-index: 500;
+}
+.overlay.active {
+    display: block;
+}
+.notification {
+    position: fixed;
+    top: -110px; 
+    left: 55%;
+    transform: translateX(-50%);
+    display: inline-block;
+    white-space: nowrap;
+    width: auto;
+    background-color: #41eea0;
+    color: black;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-align: center;
+    z-index: 1000;
+    transition: top 0.5s ease-in-out;
+}
+.notification.show {
+    top: 0;
+}
+
+
+
+

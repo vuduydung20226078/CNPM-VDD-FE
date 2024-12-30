@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LM Systems</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="UserManagement.css" />
+  </head>
+
+  <body id="body">
+    <!-- Navbar -->
+    <div class="l-navbar show" id="navbar">
+        <div class="nav">
+            <div>
+                <a href="#" class="nav_logo">
+                    <ion-icon name="library" class="nav-logo-icon"></ion-icon>
+                    <span class="nav_logo-text">LM Systems</span>
+                </a>
+                <div class="nav_toggle" id="nav_toggle">
+                    <ion-icon name="chevron-back-outline" title="Thu gọn"></ion-icon>
+                </div>
+                <ul class="nav_list">
+                    <a href="./home.html" class="nav_link">
+                        <ion-icon name="home" class="nav_icon" title="Trang chủ"></ion-icon>
+                        <span class="nav_text">Trang chủ</span>
+                    </a>
+                    <a href="#" class="nav_link">
+                        <ion-icon name="book" class="nav_icon" title="Quản lý sách"></ion-icon>
+                        <span class="nav_text">Quản lý sách</span>
+                    </a>
+                    <a href="#" class="nav_link active">
+                        <ion-icon name="people" class="nav_icon" title="Quản lý người dùng"></ion-icon>
+                        <span class="nav_text">Quản lý người dùng</span>
+                    </a>
+                </ul>
+            </div>
+            <div>
+                <a href="./loginRegister.html" class="nav_link" id="logout">
+                    <ion-icon name="log-out" class="nav_icon" title="Đăng xuất"></ion-icon>
+                    <span class="nav_text">Đăng xuất</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- Dropdown menu profile -->
+    <ion-icon name="arrow-back-circle" id="arrow-back-icon" title="Quay lại"></ion-icon>
+    <div class="menu-profile">
+        
+        <div class="menu-profile-icon">
+            <img src="\Assets\user0.png" class="user-pic" id="userpic" title="Thông tin tài khoản">
+        </div>
+        <div class="drop-menu-profile" id="drop-menu-profile">
+            <a id="username" href="#"> <img src="\Assets\user0.png" class="user-pic-in">Username0 </a>
+            <a href="#" id="profile-icon">
+                <ion-icon name="person"></ion-icon> Thông tin cá nhân
+            </a>
+            <a href="#" id="text-view-list-borrow">
+                <ion-icon name="book"></ion-icon> Danh sách mượn
+            </a>
+            <a href="#">
+                <ion-icon name="help-circle"></ion-icon> Hỗ trợ: 0329876604
+            </a>
+            <a href="#">
+                <ion-icon name="swap-horizontal"></ion-icon> Chuyển tài khoản
+            </a>
+        </div>
+    </div>
+    <!-- management user-->
+    <div class="container">
+      <h1>Quản lý người dùng</h1>
+
+      <!-- Search Bar -->
+      <div class="search-bar">
+          <input type="text" id="searchInput" placeholder="tìm kiếm bằng Mã hoặc Tên tài khoản" />
+          <button onclick="searchUser()">Tìm</button>
+      </div>
+
+      <!-- User Table -->
+      <table id="userTable">
+          <thead>
+              <tr>
+                  <th>Mã</th>
+                  <th>Tên tài khoản</th>
+                  <th>Email</th>
+                  <th>Họ và Tên</th>
+                  <th>Số điện thoại</th>
+                  <th>Địa chỉ</th>
+                  <th>Thao tác</th>
+              </tr>
+          </thead>
+          <tbody>
+              <!-- Dynamic user rows will be added here via JS -->
+          </tbody>
+      </table>
+      <!-- Thêm vào cuối bảng để tạo phần phân trang -->
+      <div id="pagination" style="margin-top: 10px; text-align: center;"></div>
+
+    </div>
+    <div id="notification" class="notification">
+        <ion-icon name="checkmark-outline"></ion-icon> Đăng nhập thành công!
+    </div>
+  <!-- lớp phủ -->
+    <div id="overlay" class="overlay"></div>
+  <!-- User Details Modal -->
+    <div id="userDetailsModal" class="modal">
+        <div class="modal-content">
+            <ion-icon name="close-outline" id="close-modal"></ion-icon>
+            <h2>Quản lý mượn trả sách</h2>
+            <p><strong>Mã:</strong> <span id="userId"></span></p>
+            <p><strong>Tên tài khoản:</strong> <span id="userName"></span></p>
+
+            <h3>Danh sách đang mượn</h3>
+            <table id="borrowedBooksTable">
+                <thead>
+                    <tr>
+                        <th>Mã mượn</th>
+                        <th>Mã sách</th>
+                        <th>Tên sách</th>
+                        <th>Ngày mượn</th>
+                        <th>Hạn mượn</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Borrowed books rows -->
+                </tbody>
+            </table>
+            <input type="text" id="searchBook" placeholder="Tìm kiếm bằng Mã sách" />
+            <button id="findbook" >Tìm</button>
+        </div>
+    </div>
+
+      <!-- Chi tiết sách -->
+    <button id="title-details-book">Chi tiết sách
+        <ion-icon name="close-outline" id="close-details-book"></ion-icon>
+    </button>
+    <section class="see-book-details">
+        <div class="details-overview" id="details-overview">
+            <img src="/Assets/user0.png" id="picture-book" alt="Ảnh bìa sách">
+            <p><b>ID:</b> 1</p>
+            <p><b>Tên sách: </b>Doreamon</p>
+            <p><b>Tác giả: </b>Fujiko F. Fujio</p>
+            <p><b>Thể loại: </b>Truyện tranh</p>
+            <p><b>Ngày xuất bản: </b>12/07/2024</p>
+            <p><b>Số lượng trong kho: </b>10</p>
+            <p class="description-book"><b>Mô tả: </b>Bộ truyện được xem là huyền thoại của Nhật Bản. Nói về cuộc sống của một chú nhóc tên Nobita, tính tình hậu đậu và chú mèo máy Doremon đến từ thế kỉ 22 cùng những người bạn Xuka, Chaien, Xeko; để từ đó gây ra bao tiếng cười và rút ra những bài học ý nghĩa cho người xem !!</p>
+        </div>
+        <button>Mượn</button>
+    </section>
+    <script src="UserManagement.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
+  </body>
+</html>
