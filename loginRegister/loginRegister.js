@@ -16,7 +16,7 @@ async function handleRegistration(event) {
     console.log(registrationData);
     try {
         // Send registration data to server
-        const response = await fetch('http://localhost:8080/register', {
+        const response = await fetch('http://localhost:8081/api/auth/register', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(registrationData)
@@ -40,7 +40,7 @@ async function handleLogin(event) {
         password: document.querySelector('.login input[type="password"]').value
     };
     try {
-        const response = await fetch('http://localhost:8080/login', {
+        const response = await fetch('http://localhost:8081/api/auth/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(loginData)
@@ -54,7 +54,8 @@ async function handleLogin(event) {
                 imageLink: data.imageLink,
                 name: data.name,
                 address: data.address,
-                phone: data.phone
+                phone: data.phone,
+                userRole: data.userRole
             }
             sessionStorage.setItem("isLogin", true);
             sessionStorage.setItem("infoUser", JSON.stringify(infoUser));

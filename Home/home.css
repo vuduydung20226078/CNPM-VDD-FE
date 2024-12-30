@@ -744,10 +744,12 @@ a {
 }
 .notification {
     position: fixed;
-    top: -80px; 
+    top: -110px; 
     left: 55%;
     transform: translateX(-50%);
-    width: 250px;
+    display: inline-block;
+    white-space: nowrap;
+    width: auto;
     background-color: #41eea0;
     color: black;
     padding: 15px;

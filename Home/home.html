@@ -27,11 +27,11 @@
                         <ion-icon name="home" class="nav_icon" title="Trang chủ"></ion-icon>
                         <span class="nav_text">Trang chủ</span>
                     </a>
-                    <a href="#" class="nav_link">
+                    <a href="#" onclick="checkRoleBM()"class="nav_link">
                         <ion-icon name="book" class="nav_icon" title="Quản lý sách"></ion-icon>
                         <span class="nav_text">Quản lý sách</span>
                     </a>
-                    <a href="#" class="nav_link">
+                    <a href="#" onclick="checkRoleUM()" class="nav_link">
                         <ion-icon name="people" class="nav_icon" title="Quản lý người dùng"></ion-icon>
                         <span class="nav_text">Quản lý người dùng</span>
                     </a>
@@ -203,7 +203,7 @@
         </div>
         <div id="section-container-cmt">
             <div id="section-cmt">
-                <img class="user-pic-cmt" src="/Assets/user0.png">
+                <img class="user-pic-cmt" id="user-pic-cmt" src="/Assets/user0.png">
                 <textarea row="0" id="cmt-input" placeholder="Bình luận..."></textarea>   
             </div>
             <div type="button" id="btn-post-cmt">

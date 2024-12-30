@@ -3,6 +3,7 @@
 // console.log(currentDate)
 // const borrowDate = currentDate.format("DD-MM-YYYY");
 // console.log(borrowDate);
+
 const body = document.getElementById("body");
 window.onload = function() {
     const notification = document.getElementById('notification');
@@ -46,7 +47,7 @@ const handleSearchInput = () => {
     timeout = setTimeout( async () => {
         const searchTerm = document.getElementById("search-info").value.toLowerCase().trim();
         try {
-            const response = await fetch('http://localhost:8080/api/books/allbooks');
+            const response = await fetch('http://localhost:8081/api/books/allbooks');
             if (!response.ok){
                 throw new Error(`Error: ${response.status}`);
             };
@@ -100,15 +101,6 @@ const showMenu = (toggleId, navbarId, bodyId) => {
     }
 };
 showMenu('nav_toggle', 'navbar', 'body');
-
-// color hover of navbar
-const linkColor = document.querySelectorAll('.nav_link');
-function colorLink() {
-    linkColor.forEach(link => link.classList.remove('active'));
-    this.classList.add('active');
-}
-linkColor.forEach(link => link.addEventListener('click', colorLink));
-
 // dropdown menu profile
 const dropDownProfile = (menuId, userpicId) => {
     const userpic = document.getElementById(userpicId),
@@ -131,14 +123,32 @@ dropDownProfile('drop-menu-profile', 'userpic');
 const infoUser = JSON.parse(sessionStorage.getItem('infoUser'));
 if (infoUser) {
     document.addEventListener('DOMContentLoaded', () => {
-        document.getElementById('username').textContent = infoUser.username;
+        const imgElement = `
+            <img src="${infoUser.imageLink}" class="user-pic-in">${infoUser.username}
+        `
+        document.getElementById('username').innerHTML = imgElement;
         document.getElementById('profile-name').textContent = infoUser.name || "Chưa cập nhật";
         document.getElementById('profile-phone').textContent = infoUser.phone || "Chưa cập nhật";
         document.getElementById('profile-address').textContent = infoUser.address || "Chưa cập nhật";
         document.getElementById('avt-in-profile').src = infoUser.imageLink || "/Assets/user0.png";
-
+        document.getElementById('user-pic-cmt').src = infoUser.imageLink || "/Assets/user0.png";
+        document.getElementById('userpic').src = infoUser.imageLink || "/Assets/user0.png";
+        
     });
-    sessionStorage.setItem('infoUser', JSON.stringify(infoUser));
+};
+function checkRoleUM(){
+    if(infoUser.userRole === 1){
+        window.location.href = 'UserManagement.html';
+    } else {
+        notification("Bạn không có quyền truy cập vào đây!", false);
+    }
+};
+function checkRoleBM(){
+    if(infoUser.userRole === 1){
+        window.location.href = 'BookManagement.html';
+    } else {
+        notification("Bạn không có quyền truy cập vào đây!", false);
+    }
 };
 // update profile
 const updateProfileBtn = document.getElementById("update-profile");
@@ -181,7 +191,7 @@ updateProfileBtn.addEventListener("click", (e) => {
             phone: profilePhone.innerText
         }
         console.log(dataToSend);
-        fetch(`http://localhost:8080/api/users/update`, {
+        fetch(`http://localhost:8081/api/users/update`, {
             method: 'PUT',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(dataToSend)
@@ -207,7 +217,7 @@ textarea.addEventListener('input', function () {
 const listBook = document.getElementById("list-book");
 async function fetchDataBooks() {
     try {
-        const response = await fetch('http://localhost:8080/api/books/allbooks');
+        const response = await fetch('http://localhost:8081/api/books/allbooks');
         if (!response.ok){
             throw new Error(`Error: ${response.status}`);
         };
@@ -305,7 +315,7 @@ function showDetailsBook(bookID, e) {
 // function lấy rate mỗi cuốn sách do user hiện tại đánh giá
 async function takeRateByUser(){
     try {
-        const response = await fetch(`http://localhost:8080/api/rates/getrate/${infoUser.userID}`);
+        const response = await fetch(`http://localhost:8081/api/rates/getrate/${infoUser.userID}`);
         if (!response.ok) throw new Error(`Error! Status: ${response.status}`);
         const data =  await response.json();
         console.log(data);
@@ -318,7 +328,8 @@ async function takeRateByUser(){
 takeRateByUser();
 async function addDetailsByBookID(bookID){
     const rateOfUser = JSON.parse(sessionStorage.getItem('rateOfUser'));
-    fetch(`http://localhost:8080/api/books/detail/${bookID}`)
+    console.log(rateOfUser)
+    fetch(`http://localhost:8081/api/books/detail/${bookID}`)
         .then(response => {
             if (!response.ok){
                 throw new Error(`Error, Status: ${response.status}`);
@@ -358,56 +369,107 @@ async function addDetailsByBookID(bookID){
                 body.classList.add("no-scroll");
                 //function hover rate by userID, take rate by user
                 const stars = document.querySelectorAll(".count-star");
-                const rateOfBook = rateOfUser.find(r => r.bookID === bookID);
-                let starToFillColor = 0;
-                if(rateOfBook){
-                    starToFillColor = parseInt(rateOfBook.rate);
-                    for (let i = 0; i < starToFillColor; i++){
-                        stars[i].style.color = `yellow`;
-                    };
-                };
-                Array.from(stars).forEach((star, index) => {
-                    const numberStar = index + 1;
-                    star.addEventListener("mouseenter", () => {
-                        for(let i = 0; i <= index; i++){
-                            stars[i].style.color = 'yellow';
-                        };
-                    }); 
-                    star.addEventListener("mouseleave", () => {
-                        for(let i = 9; i > starToFillColor - 1; i--){
-                            stars[i].style.color = 'gray';
-                        };
-                    });
-                    star.addEventListener("click", async () => {
-                        const dataToSend = {
-                            userID: infoUser.userID,
-                            bookID,
-                            rate: numberStar
-                        };
-                        try {
-                            const response = await fetch(`http://localhost:8080/api/rates/create`,{
-                                method: 'POST',
-                                headers: {'Content-Type':'application/json'},
-                                body: JSON.stringify(dataToSend)
-                            });
-                            if (!response.ok) throw new Error(`Error! Status: ${response.status}`);
-                            takeRateByUser();
-                            const dataReceive = await response.json();
-                            document.getElementById(`rate-book-${dataToSend.bookID}`).innerHTML = `Đánh giá: ${dataReceive.rate} <ion-icon name="star" class="icon-star"></ion-icon>`;
-                            starToFillColor = dataToSend.rate;
-                            for(let i = 0; i < starToFillColor; i++){
+                if(!rateOfUser || rateOfUser.length === 0){
+                    console.log(123)
+                    let starToFillColor = 0;
+                        Array.from(stars).forEach((star, index) => {
+                        const numberStar = index + 1;
+                        star.addEventListener("mouseenter", () => {
+                            for(let i = 0; i <= index; i++){
                                 stars[i].style.color = 'yellow';
                             };
-                            for(let i = 9; i >= dataToSend.rate; i--){
+                        }); 
+                        star.addEventListener("mouseleave", () => {
+                            for(let i = 9; i > starToFillColor - 1; i--){
                                 stars[i].style.color = 'gray';
                             };
-                            notification("Gửi đánh giá thành công!", true);
-                        } catch (error) {
-                            console.error(error);
-                            notification(error.message, false);
-                        };
+                        });
+                        star.addEventListener("click", async () => {
+                            const dataToSend = {
+                                userID: infoUser.userID,
+                                bookID,
+                                rate: numberStar
+                            };
+                            try {
+                                const response = await fetch(`http://localhost:8081/api/rates/create`,{
+                                    method: 'POST',
+                                    headers: {'Content-Type':'application/json'},
+                                    body: JSON.stringify(dataToSend)
+                                });
+                                if (!response.ok) throw new Error(`Error! Status: ${response.status}`);
+                                takeRateByUser();
+                                const dataReceive = await response.json();
+                                document.getElementById(`rate-book-${dataToSend.bookID}`).innerHTML = `Đánh giá: ${dataReceive.rate} <ion-icon name="star" class="icon-star"></ion-icon>`;
+                                starToFillColor = dataToSend.rate;
+                                for(let i = 0; i < starToFillColor; i++){
+                                    stars[i].style.color = 'yellow';
+                                };
+                                for(let i = 9; i >= dataToSend.rate; i--){
+                                    stars[i].style.color = 'gray';
+                                };
+                                notification("Gửi đánh giá thành công!", true);
+                            } catch (error) {
+                                console.error(error);
+                                notification(error.message, false);
+                            };
+                        });
                     });
-                });
+                } else {
+                    console.log(456)
+                    const rateOfBook = rateOfUser.find(r => r.bookID === bookID);
+                    console.log(rateOfBook)
+                    let starToFillColor = 0;
+                    if(rateOfBook){
+                        starToFillColor = parseInt(rateOfBook.rate);
+                        console.log(starToFillColor);
+                        for (let i = 0; i < starToFillColor; i++){
+                            stars[i].style.color = `yellow`;
+                        };
+                    };
+                        Array.from(stars).forEach((star, index) => {
+                        const numberStar = index + 1;
+                        star.addEventListener("mouseenter", () => {
+                            for(let i = 0; i <= index; i++){
+                                stars[i].style.color = 'yellow';
+                            };
+                        }); 
+                        star.addEventListener("mouseleave", () => {
+                            for(let i = 9; i > starToFillColor - 1; i--){
+                                stars[i].style.color = 'gray';
+                            };
+                        });
+                        star.addEventListener("click", async () => {
+                            const dataToSend = {
+                                userID: infoUser.userID,
+                                bookID,
+                                rate: numberStar
+                            };
+                            try {
+                                const response = await fetch(`http://localhost:8081/api/rates/create`,{
+                                    method: 'POST',
+                                    headers: {'Content-Type':'application/json'},
+                                    body: JSON.stringify(dataToSend)
+                                });
+                                if (!response.ok) throw new Error(`Error! Status: ${response.status}`);
+                                takeRateByUser();
+                                const dataReceive = await response.json();
+                                document.getElementById(`rate-book-${dataToSend.bookID}`).innerHTML = `Đánh giá: ${dataReceive.rate} <ion-icon name="star" class="icon-star"></ion-icon>`;
+                                starToFillColor = dataToSend.rate;
+                                for(let i = 0; i < starToFillColor; i++){
+                                    stars[i].style.color = 'yellow';
+                                };
+                                for(let i = 9; i >= dataToSend.rate; i--){
+                                    stars[i].style.color = 'gray';
+                                };
+                                notification("Gửi đánh giá thành công!", true);
+                            } catch (error) {
+                                console.error(error);
+                                notification(error.message, false);
+                            };
+                        });
+                    });
+                };
+                
             };
 
         })
@@ -418,7 +480,7 @@ async function addDetailsByBookID(bookID){
 };
 async function addContentCmtByBookID(bookID){
     try {
-        const response = await fetch(`http://localhost:8080/api/comments/getcmt/${bookID}`);
+        const response = await fetch(`http://localhost:8081/api/comments/getcmt/${bookID}`);
         if (!response.ok){
             throw new Error(`Error, Status: ${response.status}`);
         };``
@@ -498,7 +560,7 @@ async function postComment(){
     }
     console.log(comment);
     try {
-        const response = await fetch("http://localhost:8080/api/comments/post",{
+        const response = await fetch("http://localhost:8081/api/comments/post",{
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(comment)
@@ -592,7 +654,7 @@ const showComment = (commentID, contentComment) => {
 };
 async function deleteComment(commentID){
     try {
-        const response = await fetch(`http://localhost:8080/api/comments/${commentID}`, {
+        const response = await fetch(`http://localhost:8081/api/comments/${commentID}`, {
             method: 'DELETE'
         });
         if (!response.ok) throw new Error(`Error, Status: ${response.status}`);
@@ -634,7 +696,7 @@ async function editComment(commentID, oldComment){
         contentEdited
         };
         try {
-            const response = await fetch(`http://localhost:8080/api/comments/${commentID}`, {
+            const response = await fetch(`http://localhost:8081/api/comments/${commentID}`, {
                 method: 'PUT',
                 headers: {'Content-Type' : 'application/json'},
                 body: JSON.stringify(dataToSend)
@@ -696,7 +758,7 @@ async function deleteElementInCart(bookID){
         bookID
     };
     try {
-        const response = await fetch(`http://localhost:8080/api/cart/deleteItem`, {
+        const response = await fetch(`http://localhost:8081/api/cart/deleteItem`, {
             method: 'DELETE',
             headers:  {'Content-Type' : 'application/json'},
             body: JSON.stringify(dataToSend)
@@ -728,7 +790,7 @@ async function deleteElementsInCart(){
         listBookID: bookIDToSend
     }
     try {
-        const response = await fetch(`http://localhost:8080/api/cart/deleteItem`, {
+        const response = await fetch(`http://localhost:8081/api/cart/deleteItem`, {
             method: 'DELETE',
             headers: {'Content-Type' : 'application/json'},
             body: JSON.stringify(dataToSend)
@@ -750,7 +812,7 @@ async function deleteElementsInCart(){
 //function xem thông tin trong giỏ 
 async function showInfoInCart(){
     try{
-        const response = await fetch(`http://localhost:8080/api/cart/getAll/${infoUser.userID}`);
+        const response = await fetch(`http://localhost:8081/api/cart/getAll/${infoUser.userID}`);
         if(!response.ok){
             throw new Error(`Error! Status: ${response.status}`);
         };
@@ -846,7 +908,7 @@ async function addItemToCart(bookID){
     }
     console.log(dataToSend)
     try {
-        const response = await fetch(`http://localhost:8080/api/cart/addItem`, {
+        const response = await fetch(`http://localhost:8081/api/cart/addItem`, {
             method: 'PUT',
             headers: {'Content-Type' : 'application/json'},
             body: JSON.stringify(dataToSend)
@@ -866,7 +928,7 @@ async function addItemToCart(bookID){
 // function add danh sách đang mượn vào bảng
 async function FetchDataBorrows(){
     try {
-        const response = await fetch(`http://localhost:8080/api/borrowed-books/user/${infoUser.userID}`);
+        const response = await fetch(`http://localhost:8081/api/borrowed-books/user/${infoUser.userID}`);
         if(!response.ok) throw new Error(`Error! Status: ${response.status}`);
         const dataReceive = await response.json();
         console.log(dataReceive);
@@ -957,7 +1019,7 @@ optionCategory.addEventListener("click", async (e) => {
         e.target.style.backgroundColor = "#444";
         e.target.style.color = "#dedede";
         try {
-            const response = await fetch('http://localhost:8080/api/books/allbooks');
+            const response = await fetch('http://localhost:8081/api/books/allbooks');
             if (!response.ok){
                 throw new Error(`Error: ${response.status}`);
             };
@@ -991,7 +1053,7 @@ optionAuthor.addEventListener("click", async (e) => {
         e.target.style.backgroundColor = "#444";
         e.target.style.color = "#dedede";
         try {
-            const response = await fetch('http://localhost:8080/api/books/allbooks');
+            const response = await fetch('http://localhost:8081/api/books/allbooks');
             if (!response.ok){
                 throw new Error(`Error: ${response.status}`);
             };
@@ -1032,7 +1094,7 @@ document.getElementById("option-filter-status").addEventListener("click", async 
         if(e.target.innerText === "SÁCH MƯỢN NHIỀU TRONG THÁNG"){
             console.log(1)
             try {
-                const response = await fetch(`http://localhost:8080/api/books/allbooks`);
+                const response = await fetch(`http://localhost:8081/api/books/allbooks`);
                 if(!response.ok) throw new  Error(`Error: Status ${response.status}`);
                 const dataReceived = await response.json();
                 const dataSorted = dataReceived.sort((a, b) => {
@@ -1060,7 +1122,7 @@ document.getElementById("option-filter-status").addEventListener("click", async 
             document.getElementById("filter-author").value = "";
         } else {
             try {
-                const response = await fetch(`http://localhost:8080/api/books/allbooks`);
+                const response = await fetch(`http://localhost:8081/api/books/allbooks`);
                 if(!response.ok) throw new  Error(`Error: Status ${response.status}`);
                 const dataReceived = await response.json();
                 const dataSorted = dataReceived.sort((a, b) => {
